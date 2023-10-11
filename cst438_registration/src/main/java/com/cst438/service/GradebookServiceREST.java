@@ -3,6 +3,7 @@ package com.cst438.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,7 +32,10 @@ public class GradebookServiceREST implements GradebookService {
 		System.out.println("Start Message "+ student_email +" " + course_id); 
 	
 		// TODO use RestTemplate to send message to gradebook service
-		
+		Enrollment startEnrollment = new Enrollment();
+		int enrollment_id = startEnrollment.getEnrollment_id();
+		EnrollmentDTO newEnrollment = new EnrollmentDTO(enrollment_id, student_email, student_name, course_id);
+		restTemplate.postForObject("http://localhost:8081/enrollment", newEnrollment, EnrollmentDTO.class);
 	}
 	
 	@Autowired
@@ -45,5 +49,10 @@ public class GradebookServiceREST implements GradebookService {
 		System.out.println("Grades received "+grades.length);
 		
 		//TODO update grades in enrollment records with grades received from gradebook service
+		for (FinalGradeDTO grade : grades) {
+			Enrollment enrollment = enrollmentRepository.findByEmailAndCourseId(grade.studentEmail(), grade.courseId());
+			enrollment.setCourseGrade(grade.grade());
+			enrollmentRepository.save(enrollment);
+		}
 	}
 }
