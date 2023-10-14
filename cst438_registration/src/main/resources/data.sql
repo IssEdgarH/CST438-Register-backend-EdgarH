@@ -12,7 +12,7 @@ INSERT INTO course VALUES
 (2020,'Fall',31253,1,'BUS 307 - Finance','We 2:00PM - 3:50PM','506','112','hwieland@csumb.edu','2020-08-24','2020-12-13'),
 (2020,'Fall',31747,1,'CST 238 - Introduction to Data Structures','Mo 2:00PM - 2:50PM','506','117','jgross@csumb.edu','2020-08-24','2020-12-13'),
 (2021,'Fall',40442,1,'CST 363 - Introduction to Database Systems','MoWe 4:00PM - 5:50PM','506','104','dwisneski@csumb.edu', '2021-08-24', '201-12-13'),
-(2021,'Fall',40443,1,'title','time','building','room','instructor','2021-08-24','201-12-13')
+(2021,'Fall',40443,1,'title','time','building','room','dwisneski@csumb.edu','2021-08-24','201-12-13')
 ;
 
 insert into enrollment values 
@@ -21,4 +21,6 @@ insert into enrollment values
 (3, 1, 2020, 'Fall', 31045, null),
 (4, 2, 2020, 'Fall', 31045, null),
 (5, 3, 2020, 'Fall', 31045, null),
-(6, 3, 2021, 'Fall', 40443, null);
+(6, 3, 2021, 'Fall', 40443, null),
+(7, 1, 2021, 'Fall', 40443, null)
+;

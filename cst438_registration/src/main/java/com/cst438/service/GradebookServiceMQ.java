@@ -1,6 +1,7 @@
 package com.cst438.service;
 
 
+import com.cst438.domain.*;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -9,10 +10,6 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.cst438.domain.FinalGradeDTO;
-import com.cst438.domain.Enrollment;
-import com.cst438.domain.EnrollmentDTO;
-import com.cst438.domain.EnrollmentRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
@@ -47,7 +44,6 @@ public class GradebookServiceMQ implements GradebookService {
 		// deserialize the string message to FinalGradeDTO[] 
 		
 		// TODO
-
 	}
 	
 	private static String asJsonString(final Object obj) {
