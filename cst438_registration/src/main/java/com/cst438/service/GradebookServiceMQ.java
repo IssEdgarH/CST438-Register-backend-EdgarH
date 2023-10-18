@@ -25,7 +25,6 @@ public class GradebookServiceMQ implements GradebookService {
 
 	@Autowired
 	EnrollmentRepository enrollmentRepository;
-
 	Queue gradebookQueue = new Queue("gradebook-queue", true);
 
 	@Bean
